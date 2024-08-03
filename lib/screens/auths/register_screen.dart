@@ -1,0 +1,242 @@
+import 'package:fan_test/blocs/auth_bloc/bloc.dart';
+import 'package:fan_test/screens/auths/login_screen.dart';
+import 'package:fan_test/screens/wrapper.dart';
+import 'package:fan_test/themes/light_colors.dart';
+import 'package:fan_test/utils/constants_helper.dart';
+import 'package:fan_test/widgets/buttons/button_main_widget.dart';
+import 'package:fan_test/widgets/dialogs/dialog_widget.dart';
+import 'package:fan_test/widgets/inputs/input_text_widget.dart';
+import 'package:fan_test/widgets/texts/text_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart' as getx;
+
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  TextEditingController namaCtrl = TextEditingController();
+  TextEditingController emailCtrl = TextEditingController();
+  TextEditingController passwordCtrl = TextEditingController();
+
+  AuthBloc authBloc = AuthBloc();
+
+  String errorMessage = "";
+  bool isLoading = false;
+  bool isEnable = false;
+
+  String emailValidator =
+      r"[a-z0-9!#%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$";
+
+  void checkEnable() {
+    if (namaCtrl.text.isNotEmpty &&
+        emailCtrl.text.isNotEmpty &&
+        passwordCtrl.text.isNotEmpty) {
+      isEnable = true;
+    } else {
+      isEnable = false;
+    }
+    setState(() {});
+  }
+
+  void checkValidEmail() {
+    if (emailCtrl.text != "") {
+      if (RegExp(emailValidator).hasMatch(emailCtrl.text)) {
+        isEnable = true;
+        errorMessage = "";
+      } else {
+        isEnable = false;
+        errorMessage = "Please enter a valid email address.";
+      }
+    } else {
+      isEnable = false;
+      errorMessage = "";
+    }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    authBloc = BlocProvider.of<AuthBloc>(context);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<AuthBloc, AuthState>(
+          listener: (context, state) async {
+            if (state is RegisterFailed) {
+              showDialog(
+                context: context,
+                builder: (context) => Dialog2Widget(
+                  title: "Gagal",
+                  value: "${state.message}",
+                  okeBtn: () => getx.Get.back(),
+                ),
+              );
+              isLoading = false;
+              setState(() {});
+            } else if (state is RegisterLoaded) {
+              isLoading = true;
+              setState(() {});
+            } else if (state is RegisterSuccess) {
+              showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (context) => WillPopScope(
+                  onWillPop: () async => false,
+                  child: Dialog2Widget(
+                    title: "Berhasil Registrasi",
+                    value:
+                        "Akun anda berhasil didaftarkan, Silahkan periksa email Anda untuk verifikasi email.",
+                    okeBtn: () {},
+                  ),
+                ),
+              );
+              await Future.delayed(Duration(seconds: 4), () {
+                getx.Get.back();
+              });
+              getx.Get.offAll(() => const WrapperAuth());
+              isLoading = false;
+              setState(() {});
+            }
+          },
+        ),
+      ],
+      child: SafeArea(
+        child: Scaffold(
+          body: SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.only(
+                left: 24,
+                right: 24,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: ConstantsHelper.screenHeight * 0.16),
+                  Center(
+                    child: CustomText(
+                      size: 30,
+                      fontWeight: FontWeight.w700,
+                      textAlign: TextAlign.center,
+                      color: LightColors.mainColor,
+                      value: "ChatApp",
+                    ),
+                  ),
+                  const SizedBox(height: 70),
+                  InputTextWidget(
+                    title: "Nama",
+                    controller: namaCtrl,
+                    textInputAction: TextInputAction.next,
+                    onChanged: (p0) {
+                      checkEnable();
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  InputTextWidget(
+                    title: "Email",
+                    controller: emailCtrl,
+                    textInputAction: TextInputAction.next,
+                    onChanged: (p0) {
+                      checkValidEmail();
+                      checkEnable();
+                    },
+                  ),
+                  const SizedBox(height: 6),
+                  TextNormalRegular(
+                    value: errorMessage,
+                    color: LightColors.red,
+                  ),
+                  SizedBox(height: errorMessage == "" ? 14 : 10),
+                  InputTextWidget(
+                    title: "Password",
+                    isPassword: true,
+                    controller: passwordCtrl,
+                    textInputType: TextInputType.visiblePassword,
+                    onEditingComplete: () async {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      authBloc.add(
+                        RegisterEvent(
+                          nama: namaCtrl.text,
+                          email: emailCtrl.text,
+                          password: passwordCtrl.text,
+                        ),
+                      );
+                    },
+                    onChanged: (p0) {
+                      checkEnable();
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  ButtonMainWidget(
+                    isEnable: isEnable && !isLoading,
+                    onTap: () async {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      authBloc.add(
+                        RegisterEvent(
+                          nama: namaCtrl.text,
+                          email: emailCtrl.text,
+                          password: passwordCtrl.text,
+                        ),
+                      );
+                    },
+                    text: isLoading
+                        ? const SpinKitFadingCircle(
+                            size: 17,
+                            color: LightColors.white,
+                          )
+                        : TextNormalBold(
+                            value: "Registrasi",
+                            color: LightColors.white,
+                            letterSpacing: 1.25,
+                          ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CustomText(
+                          size: 12,
+                          value: "Sudah punya akun ?",
+                          color: LightColors.mainText,
+                        ),
+                        TextButton(
+                          style: const ButtonStyle(
+                            overlayColor:
+                                WidgetStatePropertyAll(Colors.transparent),
+                          ),
+                          onPressed: () {
+                            getx.Get.off(
+                              () => const LoginScreen(),
+                              transition: getx.Transition.rightToLeft,
+                              duration: Durations.long2,
+                            );
+                          },
+                          child: CustomText(
+                            size: 12,
+                            value: "Login",
+                            fontWeight: FontWeight.w700,
+                            color: LightColors.mainText,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
