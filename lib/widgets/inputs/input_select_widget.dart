@@ -49,7 +49,7 @@ class InputSelectWidget extends StatelessWidget {
               ]
             ],
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
         ],
         Container(
           decoration: BoxDecoration(
@@ -72,23 +72,21 @@ class InputSelectWidget extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.only(right: prefix != null ? 5 : 0),
-                        child: prefix ?? SizedBox.shrink(),
+                        child: prefix ?? const SizedBox.shrink(),
                       ),
                       Expanded(
-                        child: Container(
-                          child: Text(
-                            value == "" ? placeHolder : value,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              color: value == ""
-                                  ? LightColors.notSelected
-                                  : LightColors.mainText,
-                            ),
+                        child: Text(
+                          value == "" ? placeHolder : value,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: value == ""
+                                ? LightColors.notSelected
+                                : LightColors.mainText,
                           ),
                         ),
                       ),
-                      suffix ?? SizedBox.shrink(),
+                      suffix ?? const SizedBox.shrink(),
                     ],
                   ),
                 ),

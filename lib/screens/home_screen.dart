@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen>
   void initState() {
     authBloc = BlocProvider.of<AuthBloc>(context);
     animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 200));
+        AnimationController(vsync: this, duration: const Duration(milliseconds: 200));
     super.initState();
   }
 
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen>
                 context: context,
                 builder: (context) => Dialog2Widget(
                   title: "Error",
-                  value: "${state.message}",
+                  value: state.message,
                   okeBtn: () => Get.back(),
                 ),
               );
@@ -160,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen>
                         title: "Filter by Email Status",
                         valueCustom: ListView(
                           shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           children: [
                             RadioListTile.adaptive(
                               title: TextNormalSemiBold(
@@ -209,8 +209,11 @@ class _HomeScreenState extends State<HomeScreen>
             ],
           ),
           body: Container(
-            decoration: BoxDecoration(
-                border: Border(top: BorderSide(color: LightColors.mainColor))),
+            decoration: const BoxDecoration(
+              border: Border(
+                top: BorderSide(color: LightColors.mainColor),
+              ),
+            ),
             child: StreamBuilder(
               stream: _firestore.collection("users").snapshots(),
               builder: (context, snapshot) {
@@ -220,7 +223,7 @@ class _HomeScreenState extends State<HomeScreen>
                   );
                 }
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
+                  return const Center(
                     child: SpinKitFadingCircle(
                       color: LightColors.mainText,
                       size: 50,
@@ -280,7 +283,7 @@ class _HomeScreenState extends State<HomeScreen>
                   }
                 }
 
-                return SizedBox();
+                return const SizedBox();
               },
             ),
           ),

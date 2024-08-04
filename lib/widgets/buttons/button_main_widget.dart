@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ButtonMainWidget extends StatelessWidget {
   ButtonMainWidget({
-    Key? key,
+    super.key,
     required this.text,
     this.isEnable = true,
     BoxBorder? border,
@@ -13,8 +13,7 @@ class ButtonMainWidget extends StatelessWidget {
             Border.all(
                 color: isEnable
                     ? backgroundColor
-                    : backgroundColor.withOpacity(0.1)),
-        super(key: key);
+                    : backgroundColor.withOpacity(0.1));
   Widget text;
   bool isEnable;
   BoxBorder? border;

@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
         errorMessage = "";
       } else {
         isEnable = false;
-        errorMessage = "Please enter a valid email address.";
+        errorMessage = "Harap masukkan email yang valid.";
       }
     } else {
       isEnable = false;
@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 context: context,
                 builder: (context) => Dialog2Widget(
                   title: "Gagal",
-                  value: "${state.message}",
+                  value: state.message,
                   okeBtn: () => getx.Get.back(),
                 ),
               );

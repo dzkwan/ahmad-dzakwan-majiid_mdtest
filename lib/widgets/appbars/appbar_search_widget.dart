@@ -12,7 +12,7 @@ class AppbarSearchWidget extends StatefulWidget implements PreferredSizeWidget {
   Function(String) onSearchQueryChanged;
 
   @override
-  Size get preferredSize => Size.fromHeight(56.0);
+  Size get preferredSize => const Size.fromHeight(56.0);
 
   @override
   _AppbarSearchWidgetState createState() => _AppbarSearchWidgetState();
@@ -38,33 +38,33 @@ class _AppbarSearchWidgetState extends State<AppbarSearchWidget>
     return SafeArea(
       child: Container(
         height: widget.preferredSize.height,
-        padding: EdgeInsets.fromLTRB(4, 0, 4, 0),
+        padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.arrow_back, color: LightColors.mainColor),
+              icon: const Icon(Icons.arrow_back, color: LightColors.mainColor),
               onPressed: widget.onCancelSearch,
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.fromLTRB(4, 0, 4, 0),
+                padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
                 height: kToolbarHeight - 18,
                 child: TextField(
                   controller: _searchFieldController,
                   focusNode: _focusNode,
                   autofocus: true,
                   cursorColor: LightColors.mainColor,
-                  style: TextStyle(color: LightColors.mainColor),
+                  style: const TextStyle(color: LightColors.mainColor),
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: "Search...",
-                    hintStyle: TextStyle(color: LightColors.mainColor),
+                    hintStyle: const TextStyle(color: LightColors.mainColor),
                     suffixIcon: clearButton
                         ? InkWell(
-                            child:
-                                Icon(Icons.close, color: LightColors.mainColor),
                             onTap: clearSearchQuery,
+                            child:
+                                const Icon(Icons.close, color: LightColors.mainColor),
                           )
                         : null,
                   ),

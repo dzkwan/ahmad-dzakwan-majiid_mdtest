@@ -59,7 +59,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 context: context,
                 builder: (context) => Dialog2Widget(
                   title: "Gagal",
-                  value: "${state.message}",
+                  value: state.message,
                   okeBtn: () => Get.back(),
                 ),
               );
@@ -92,7 +92,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 context: context,
                 builder: (context) => Dialog2Widget(
                   title: "Akun tidak sesuai",
-                  value: "${state.message}",
+                  value: state.message,
                   okeBtn: () => Get.back(),
                 ),
               );
@@ -108,7 +108,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 context: context,
                 builder: (context) => Dialog2Widget(
                   title: "Gagal",
-                  value: "${state.message}",
+                  value: state.message,
                   okeBtn: () => Get.back(),
                 ),
               );
@@ -155,7 +155,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     );
                   }
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: SpinKitFadingCircle(
                         color: LightColors.mainText,
                         size: 50,
@@ -189,8 +189,8 @@ class _SettingScreenState extends State<SettingScreen> {
                                       child: InkWell(
                                         borderRadius: BorderRadius.circular(50),
                                         child: Container(
-                                          padding: EdgeInsets.all(16),
-                                          child: Center(
+                                          padding: const EdgeInsets.all(16),
+                                          child: const Center(
                                             child: Icon(
                                               Icons.arrow_back,
                                               color: LightColors.white,
@@ -209,13 +209,11 @@ class _SettingScreenState extends State<SettingScreen> {
                                 ],
                               ),
                               Container(
-                                padding: EdgeInsets.fromLTRB(24, 10, 24, 24),
+                                padding: const EdgeInsets.fromLTRB(24, 10, 24, 24),
                                 child: Center(
-                                  child: Container(
-                                    child: Image.asset(
-                                      "assets/images/avatar.png",
-                                      scale: 1.5,
-                                    ),
+                                  child: Image.asset(
+                                    "assets/images/avatar.png",
+                                    scale: 1.5,
                                   ),
                                 ),
                               ),
@@ -223,14 +221,14 @@ class _SettingScreenState extends State<SettingScreen> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(24),
+                          padding: const EdgeInsets.all(24),
                           child: Column(
                             children: [
-                              SizedBox(height: 20),
+                              const SizedBox(height: 20),
                               InputSelectWidget(
                                 value: "Reset Password",
                                 borderColor: LightColors.notSelected,
-                                suffix: Icon(Icons.keyboard_arrow_right),
+                                suffix: const Icon(Icons.keyboard_arrow_right),
                                 onTap: () {
                                   showDialog(
                                     context: context,
@@ -252,7 +250,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                   );
                                 },
                               ),
-                              SizedBox(height: 24),
+                              const SizedBox(height: 24),
                               InputSelectWidget(
                                 title: "Verifikasi Email",
                                 value: data.emailVerified!
@@ -260,7 +258,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                     : "Belum Verifikasi",
                                 suffix: data.emailVerified!
                                     ? null
-                                    : Icon(Icons.keyboard_arrow_right),
+                                    : const Icon(Icons.keyboard_arrow_right),
                                 isEnable: !data.emailVerified!,
                                 borderColor: data.emailVerified!
                                     ? LightColors.gray
@@ -281,13 +279,13 @@ class _SettingScreenState extends State<SettingScreen> {
                                   );
                                 },
                               ),
-                              SizedBox(height: 20),
+                              const SizedBox(height: 20),
                               InputSelectWidget(
                                 title: "Nama",
                                 value: "${data.nama}",
                                 isEnable: false,
                               ),
-                              SizedBox(height: 20),
+                              const SizedBox(height: 20),
                               InputSelectWidget(
                                 title: "Email",
                                 value: "${data.email}",
@@ -299,12 +297,12 @@ class _SettingScreenState extends State<SettingScreen> {
                       ],
                     );
                   }
-                  return SizedBox();
+                  return const SizedBox();
                 },
               ),
             ),
             Container(
-              padding: EdgeInsets.all(24),
+              padding: const EdgeInsets.all(24),
               child: ButtonMainWidget(
                 backgroundColor: LightColors.softRed,
                 text: TextNormalSemiBold(

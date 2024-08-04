@@ -48,72 +48,70 @@ class _InputTextWidgetState extends State<InputTextWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (widget.title != null) ...[
-            TextNormalRegular(
-              value: widget.title,
-              color: LightColors.mainText,
-            ),
-            SizedBox(height: 4),
-          ],
-          TextFormField(
-            controller: widget.controller,
-            style: TextStyle(color: LightColors.mainText),
-            cursorColor: LightColors.mainText,
-            keyboardType: widget.textInputType,
-            obscureText: widget.isPassword == true ? hideText : false,
-            textInputAction: widget.textInputAction,
-            onEditingComplete: widget.onEditingComplete,
-            onChanged: widget.onChanged,
-            maxLines: widget.isPassword == true ? 1 : widget.maxLines,
-            minLines: widget.isPassword == true ? null : 1,
-            decoration: InputDecoration(
-              filled: true,
-              hintText: widget.hintText,
-              focusColor: LightColors.mainText,
-              fillColor: LightColors.white,
-              contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 13),
-              labelStyle: TextStyle(
-                color: LightColors.notSelected,
-                fontSize: 16,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(
-                  color: LightColors.notSelected,
-                ),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(
-                  color: LightColors.notSelected,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(
-                  color: LightColors.notSelected,
-                  // width: 2,
-                ),
-              ),
-              suffixIconColor: LightColors.mainColor,
-              suffixIcon: widget.isPassword == true
-                  ? IconButton(
-                      onPressed: showText,
-                      splashColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      icon: Icon(hideText
-                          ? Icons.visibility_off_outlined
-                          : Icons.visibility_outlined),
-                    )
-                  : null,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (widget.title != null) ...[
+          TextNormalRegular(
+            value: widget.title,
+            color: LightColors.mainText,
           ),
+          const SizedBox(height: 4),
         ],
-      ),
+        TextFormField(
+          controller: widget.controller,
+          style: const TextStyle(color: LightColors.mainText),
+          cursorColor: LightColors.mainText,
+          keyboardType: widget.textInputType,
+          obscureText: widget.isPassword == true ? hideText : false,
+          textInputAction: widget.textInputAction,
+          onEditingComplete: widget.onEditingComplete,
+          onChanged: widget.onChanged,
+          maxLines: widget.isPassword == true ? 1 : widget.maxLines,
+          minLines: widget.isPassword == true ? null : 1,
+          decoration: InputDecoration(
+            filled: true,
+            hintText: widget.hintText,
+            focusColor: LightColors.mainText,
+            fillColor: LightColors.white,
+            contentPadding: const EdgeInsets.symmetric(vertical: 9, horizontal: 13),
+            labelStyle: const TextStyle(
+              color: LightColors.notSelected,
+              fontSize: 16,
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: const BorderSide(
+                color: LightColors.notSelected,
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: const BorderSide(
+                color: LightColors.notSelected,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: const BorderSide(
+                color: LightColors.notSelected,
+                // width: 2,
+              ),
+            ),
+            suffixIconColor: LightColors.mainColor,
+            suffixIcon: widget.isPassword == true
+                ? IconButton(
+                    onPressed: showText,
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    icon: Icon(hideText
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility_outlined),
+                  )
+                : null,
+          ),
+        ),
+      ],
     );
   }
 }

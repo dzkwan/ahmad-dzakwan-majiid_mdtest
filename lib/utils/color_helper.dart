@@ -7,7 +7,7 @@ Color getRandomColor() {
   final r = random.nextInt(256);
   final g = random.nextInt(256);
   final b = random.nextInt(256);
-  final threshold = 190;
+  const threshold = 190;
   if (r < threshold || g < threshold || b < threshold) {
     return getRandomColor();
   }

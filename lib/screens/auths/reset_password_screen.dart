@@ -56,7 +56,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 context: context,
                 builder: (context) => Dialog2Widget(
                   title: "Gagal",
-                  value: "${state.message}",
+                  value: state.message,
                   okeBtn: () => Get.back(),
                 ),
               );
@@ -95,8 +95,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           child: Scaffold(
             backgroundColor: LightColors.white,
             appBar: PreferredSize(
+              preferredSize: const Size.fromHeight(kToolbarHeight),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   boxShadow: [
                     BoxShadow(
                       color: LightColors.mainColor,
@@ -110,15 +111,15 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   backgroundColor: LightColors.white,
                   foregroundColor: LightColors.mainColor,
                   titleSpacing: 0,
-                  systemOverlayStyle: SystemUiOverlayStyle(
-                      statusBarIconBrightness: Brightness.light),
+                  systemOverlayStyle: const SystemUiOverlayStyle(
+                    statusBarIconBrightness: Brightness.light,
+                  ),
                   title: TextMediumBold(
                     value: "Reset Password",
                     color: LightColors.mainColor,
                   ),
                 ),
               ),
-              preferredSize: Size.fromHeight(kToolbarHeight),
             ),
             body: Container(
               color: LightColors.white,

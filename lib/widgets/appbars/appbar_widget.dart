@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class AppbarWidget extends StatefulWidget implements PreferredSizeWidget {
   @override
-  Size get preferredSize => Size.fromHeight(56.0);
+  Size get preferredSize => const Size.fromHeight(56.0);
 
   AppbarWidget({
     super.key,
@@ -15,7 +15,6 @@ class AppbarWidget extends StatefulWidget implements PreferredSizeWidget {
     required this.animationController,
     required this.isSearch,
     required this.onSearch,
-    // required this.ontapFilter,
     required this.onTapBack,
     this.actions,
   });
@@ -85,53 +84,37 @@ class _AppbarWidgetState extends State<AppbarWidget>
         AppBar(
           titleSpacing: 0,
           elevation: 0,
-          titleTextStyle: TextStyle(fontFamily: "Rubik"),
+          titleTextStyle: const TextStyle(fontFamily: "Roboto"),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                 child: TextMediumBold(
-                  value: "${widget.title}",
+                  value: widget.title,
                   letterSpacing: 1,
                 ),
               ),
-              Container(
-                child: Row(
-                  children: [
-                    Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(50),
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          child: Icon(
-                            Icons.search_rounded,
-                            color: LightColors.white,
-                          ),
+              Row(
+                children: [
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(50),
+                      onTapUp: onSearchTapUp,
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        child: const Icon(
+                          Icons.search_rounded,
+                          color: LightColors.white,
                         ),
-                        onTapUp: onSearchTapUp,
                       ),
                     ),
-                    if (widget.actions != null) ...[
-                      ...widget.actions!,
-                    ],
-                    // Material(
-                    //   color: Colors.transparent,
-                    //   child: InkWell(
-                    //     borderRadius: BorderRadius.circular(50),
-                    //     child: Container(
-                    //       padding: EdgeInsets.all(13),
-                    //       child: Image.asset(
-                    //         "assets/images/filter-icon.png",
-                    //         scale: 3,
-                    //       ),
-                    //     ),
-                    //     onTap: widget.ontapFilter,
-                    //   ),
-                    // ),
+                  ),
+                  if (widget.actions != null) ...[
+                    ...widget.actions!,
                   ],
-                ),
+                ],
               ),
             ],
           ),

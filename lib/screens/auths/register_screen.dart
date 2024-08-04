@@ -51,7 +51,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         errorMessage = "";
       } else {
         isEnable = false;
-        errorMessage = "Please enter a valid email address.";
+        errorMessage = "Harap masukkan email yang valid.";
       }
     } else {
       isEnable = false;
@@ -77,7 +77,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 context: context,
                 builder: (context) => Dialog2Widget(
                   title: "Gagal",
-                  value: "${state.message}",
+                  value: state.message,
                   okeBtn: () => getx.Get.back(),
                 ),
               );
@@ -100,7 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
               );
-              await Future.delayed(Duration(seconds: 4), () {
+              await Future.delayed(const Duration(seconds: 4), () {
                 getx.Get.back();
               });
               getx.Get.offAll(() => const WrapperAuth());

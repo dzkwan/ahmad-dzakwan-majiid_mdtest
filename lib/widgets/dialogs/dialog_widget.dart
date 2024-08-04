@@ -28,20 +28,20 @@ class DialogWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
-      insetPadding: EdgeInsets.fromLTRB(24, 0, 24, 0),
+      insetPadding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: LightColors.white,
         ),
-        padding: EdgeInsets.fromLTRB(24, 24, 24, 16),
+        padding: const EdgeInsets.fromLTRB(24, 24, 24, 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             TextBigBold(value: title),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             if (value != null) ...[
               TextNormalRegular(
                 value: value,
@@ -51,7 +51,7 @@ class DialogWidget extends StatelessWidget {
             ] else if (valueCustom != null) ...[
               valueCustom!
             ],
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -63,7 +63,7 @@ class DialogWidget extends StatelessWidget {
                       color: LightColors.mainColor,
                     ),
                   ),
-                  SizedBox(width: 5),
+                  const SizedBox(width: 5),
                 ],
                 if (okeBtn != null)
                   TextButton(
@@ -106,13 +106,13 @@ class Dialog2Widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-      insetPadding: EdgeInsets.fromLTRB(24, 0, 24, 0),
+      insetPadding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
           color: LightColors.white,
         ),
-        padding: EdgeInsets.fromLTRB(24, 24, 24, 24),
+        padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.min,
@@ -122,7 +122,7 @@ class Dialog2Widget extends StatelessWidget {
                 value: title,
                 textAlign: TextAlign.center,
               ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             if (value != null) ...[
               TextNormalRegular(
                 value: value,
@@ -132,39 +132,37 @@ class Dialog2Widget extends StatelessWidget {
             ] else if (valueCustom != null) ...[
               valueCustom!
             ],
-            SizedBox(height: 36),
-            Container(
-              child: Row(
-                children: [
-                  if (cancelBtn != null) ...[
-                    Expanded(
-                      child: ButtonMainWidget(
-                        backgroundColor: Colors.transparent,
-                        text: TextNormalBold(
-                          value: cancelTitle,
-                          color: LightColors.mainColor,
-                          letterSpacing: 1.25,
-                        ),
-                        border: Border.all(
-                          color: LightColors.mainColor,
-                        ),
-                        onTap: cancelBtn,
-                      ),
-                    ),
-                    SizedBox(width: 16),
-                  ],
+            const SizedBox(height: 36),
+            Row(
+              children: [
+                if (cancelBtn != null) ...[
                   Expanded(
                     child: ButtonMainWidget(
+                      backgroundColor: Colors.transparent,
                       text: TextNormalBold(
-                        value: okeTitle,
-                        color: LightColors.white,
+                        value: cancelTitle,
+                        color: LightColors.mainColor,
                         letterSpacing: 1.25,
                       ),
-                      onTap: okeBtn,
+                      border: Border.all(
+                        color: LightColors.mainColor,
+                      ),
+                      onTap: cancelBtn,
                     ),
                   ),
+                  const SizedBox(width: 16),
                 ],
-              ),
+                Expanded(
+                  child: ButtonMainWidget(
+                    text: TextNormalBold(
+                      value: okeTitle,
+                      color: LightColors.white,
+                      letterSpacing: 1.25,
+                    ),
+                    onTap: okeBtn,
+                  ),
+                ),
+              ],
             )
           ],
         ),

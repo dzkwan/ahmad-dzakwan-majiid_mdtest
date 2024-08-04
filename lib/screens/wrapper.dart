@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fan_test/screens/auths/login_screen.dart';
 import 'package:fan_test/screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';

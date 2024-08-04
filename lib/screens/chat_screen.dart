@@ -64,7 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   return TextBigBold(value: "error: ${snapshot.error}");
                 }
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
+                  return const Center(
                     child: SpinKitFadingCircle(
                       color: LightColors.mainText,
                       size: 50,
@@ -92,9 +92,10 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             color: LightColors.white,
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Expanded(
                   child: InputTextWidget(
@@ -106,7 +107,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 IconButton(
                   onPressed: klikSendChat,
-                  icon: Icon(Icons.send),
+                  icon: const Icon(Icons.send),
                 ),
               ],
             ),

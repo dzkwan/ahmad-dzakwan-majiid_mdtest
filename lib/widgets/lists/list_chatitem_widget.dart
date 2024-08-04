@@ -21,19 +21,19 @@ class ListChatitemWidget extends StatelessWidget {
         : Alignment.centerLeft;
     return Container(
       alignment: alignment,
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: (data.senderId == _firebaseAuth.currentUser!.uid)
             ? CrossAxisAlignment.end
             : CrossAxisAlignment.start,
         children: [
           TextNormalRegular(value: capitalizeEachWord("${data.from}")),
-          SizedBox(height: 2),
+          const SizedBox(height: 2),
           Container(
             constraints: BoxConstraints(
               maxWidth: ConstantsHelper.screenWidth * 0.75,
             ),
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               color: LightColors.mainColor3,
