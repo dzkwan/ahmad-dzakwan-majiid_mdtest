@@ -1,16 +1,51 @@
-# fan_test
+## FAN Integrasi Teknologi Teknikal Test
 
-A new Flutter project.
+Project ini merupakan aplikasi chat dengan authentikasi firebase dan verifikasi menggunakan email.
 
-## Getting Started
+### Fitur
 
-This project is a starting point for a Flutter application.
+- Authentikasi Firebase (Login, Registrasi, Email Verifikasi, Reset Password)
+- Chat (email verify mandatory)
 
-A few resources to get you started if this is your first Flutter project:
+### Tools yang digunakan
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Berikut merupakan tools yang digunakan dalam membuat project ini :
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Flutter](https://flutter.dev/docs/get-started/install) (versi 3.22.2)
+- [VS Code](https://code.visualstudio.com/) (dengan ekstensi Flutter dan Dart)
+- [Firebase](https://firebase.google.com/)
+
+### Package yang digunakan
+```dart
+firebase_core: ^3.3.0
+firebase_auth: ^5.1.3
+cloud_firestore: ^5.2.0
+flutter_spinkit: ^5.2.1
+flutter_easyloading: ^3.0.5
+flutter_bloc: ^8.1.6
+get: ^4.6.6
+```
+
+### Cara menjalankan project
+
+Sebelum memulai, jalankan perintah berikut pada terminal, pastikan terminal Anda berada pada project :
+```terminal
+flutter pub get
+```
+<br>
+Kemudian untuk menjalankan projectnya terdapat beberapa cara :
+
+#### dengan Terminal
+
+Dengan menjalankan perintah berikut :
+```terminal
+flutter run
+```
+
+#### dengan VS Code
+
+\- cara pertama<br>
+Klik kanan file main.dart, lalu klik ```Start Debugging```
+
+\- cara kedua<br>
+Buka file main.dart, kemudian pada pojok kanan atas, klik ```Run or Debug``` icon, lalu klik ```Start Debugging```
