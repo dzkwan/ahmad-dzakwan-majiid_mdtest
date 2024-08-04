@@ -35,14 +35,14 @@ flutter pub get
 <br>
 Kemudian untuk menjalankan projectnya terdapat beberapa cara :
 
-#### dengan Terminal
+#### 1\. menggunakan Terminal
 
 Dengan menjalankan perintah berikut :
 ```terminal
 flutter run
 ```
 
-#### dengan VS Code
+#### 2\. menggunakan VS Code
 
 \- cara pertama<br>
 Klik kanan file main.dart, lalu klik ```Start Debugging```
