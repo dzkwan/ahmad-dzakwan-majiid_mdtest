@@ -1,4 +1,3 @@
-// import 'package:fan_test/providers/auth_provider.dart';
 import 'package:fan_test/blocs/auth_bloc/bloc.dart';
 import 'package:fan_test/screens/auths/register_screen.dart';
 import 'package:fan_test/screens/auths/reset_password_screen.dart';

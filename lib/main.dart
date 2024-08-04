@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(create: (BuildContext context) => AuthBloc()),
-        // ChangeNotifierProvider(create: (_) => AuthProvider()),
       ],
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),

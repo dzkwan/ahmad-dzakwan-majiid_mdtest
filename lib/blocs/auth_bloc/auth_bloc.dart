@@ -52,8 +52,6 @@ Future<void> _register(
     var dataSignUp = await apiProvider.signUpUser(
         nama: event.nama, email: event.email, password: event.password);
 
-    // await Future.delayed(Durations.medium2);
-
     if (dataSignUp.success != null) {
       var dataEmailVerif = await apiProvider.sendVerificationEmail();
       if (dataEmailVerif.success != null) {

@@ -45,10 +45,6 @@ class _HomeScreenState extends State<HomeScreen>
 
   List<UserFirestoreModel> listUser = [];
 
-  // Future checkVerifEmail() async {
-  //   await AuthService().checkEmailVerificationAndUpdate();
-  // }
-
   void searching() {
     listUserSearch.clear();
     if (listUser.isNotEmpty) {

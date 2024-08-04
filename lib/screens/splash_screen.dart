@@ -54,8 +54,6 @@ class _SplashScreenState extends State<SplashScreen> {
             AnimatedPositioned(
               duration: const Duration(milliseconds: 800),
               curve: Curves.easeInOutBack,
-              // width: indexAnimation == 1 ? 275 : 148,
-              // height: indexAnimation == 1 ? 60 : 32,
               top: indexAnimation == 0
                   ? -100
                   : indexAnimation == 1

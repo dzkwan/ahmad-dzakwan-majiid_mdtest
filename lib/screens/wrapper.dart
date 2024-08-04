@@ -19,13 +19,6 @@ class _WrapperAuthState extends State<WrapperAuth> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.data != null) {
-            // log("data auth: ${snapshot.data}");
-            if (snapshot.data!.emailVerified) {
-              FirebaseFirestore.instance
-                  .collection("users")
-                  .doc(snapshot.data!.uid)
-                  .update({"emailVerified": true});
-            }
             return HomeScreen(
               uid: snapshot.data!.uid,
             );

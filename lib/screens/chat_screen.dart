@@ -31,7 +31,7 @@ class _ChatScreenState extends State<ChatScreen> {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   int maxLines = 4;
 
-  sendChat() async {
+  Future<void> klikSendChat() async {
     if (chatCtrl.text.isNotEmpty) {
       await chatService.sendChat(
         widget.data.uid!,
@@ -102,11 +102,10 @@ class _ChatScreenState extends State<ChatScreen> {
                     controller: chatCtrl,
                     textInputType: TextInputType.multiline,
                     maxLines: maxLines,
-                    // onEditingComplete: () {},
                   ),
                 ),
                 IconButton(
-                  onPressed: sendChat,
+                  onPressed: klikSendChat,
                   icon: Icon(Icons.send),
                 ),
               ],
