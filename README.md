@@ -12,7 +12,7 @@ Project ini merupakan aplikasi chat dengan authentikasi firebase dan verifikasi 
 Berikut merupakan tools yang digunakan dalam membuat project ini :
 
 - [Flutter](https://flutter.dev/docs/get-started/install) (versi 3.22.2)
-- [VS Code](https://code.visualstudio.com/) (dengan ekstensi Flutter dan Dart)
+- [VS Code](https://code.visualstudio.com/)
 - [Firebase](https://firebase.google.com/)
 
 ## Package yang digunakan
